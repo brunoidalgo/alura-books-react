@@ -1,0 +1,16 @@
+.logo__name {
+    font-size: 1.5em;
+    margin-left: .3em;
+}
+
+.options {
+    display: flex;
+    gap: 1em;
+    cursor: pointer;
+}
+
+.icons {
+    display: flex;
+    gap: 1em;
+    cursor: pointer;
+}

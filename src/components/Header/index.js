@@ -1,3 +1,5 @@
+import './style.css'
+
 import perfil from '../../images/perfil.svg';
 import sacola from '../../images/sacola.svg';
 import logo from '../../images/logo.svg';
@@ -10,7 +12,7 @@ const HeaderContainer = styled.header`
     align-items: center;
     text-align: center;
     justify-content: center;
-`
+`;
 
 const textOptions = ["Categorias", "Favoritos", "Minha Estante"];
 const icons = [perfil, sacola];
@@ -20,10 +22,12 @@ export default function Header() {
         <HeaderContainer>
             <img 
             src={logo} 
-            alt='logo' 
-            className='logo-img'>
+            alt='logo'>
             </img>
-            <p><strong>Alura</strong>Books</p>
+            <p className='logo__name'>
+                <strong>Alura</strong>
+                Books
+            </p>
             <ul className='options'>
                 {textOptions.map((text) => {
                     return (
