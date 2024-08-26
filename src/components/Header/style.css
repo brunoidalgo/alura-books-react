@@ -1,0 +1,40 @@
+.header-options {
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    font-size: 1.5em;
+    padding: 1em;
+  }
+
+  .logo-img {
+    margin-right: .5em;
+  }
+
+.options {
+    display: flex;
+    gap: 1em;
+    text-transform: uppercase;
+}
+
+.option {
+    height: 100%;
+    font-size: 1em;
+    min-width: 4em;
+    cursor: pointer;
+}
+
+.icons {
+    display: flex;
+}
+
+.icon {
+    margin-left: 1em;
+    cursor: pointer;
+}
