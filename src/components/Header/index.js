@@ -20,22 +20,23 @@ const LogoImg = styled.img`
     margin-left: .3em;
 `;
 
+const Opcoes = styled.ul`
+    display:flex;
+`;
+
 const Icone = styled.li`
     display: flex;
-    gap: 1em;
-    cursor: pointer;
+`;
+
+const IconeImg = styled.img`
+    cursor:pointer;
 `;
 
 const Icones = styled.ul`
-    display: flex;
-    gap: 1em;
+    display:flex;
+    gap:1em;
 `;
 
-const Opcoes = styled.ul`
-    display: flex;
-    gap: 1em;
-    cursor: pointer;
-`;
 
 const textOptions = ["Categorias", "Favoritos", "Minha Estante"];
 const icons = [perfil, sacola];
@@ -61,15 +62,15 @@ export default function Header() {
                     )
                     })}
             </Opcoes>
-            <ul className='icons'>
+            <Icones className='icons'>
                 {icons.map((icon) => {
                     return (
                     <Icone>
-                        <Icones src={icon} alt='icone'></Icones>
+                        <IconeImg src={icon} alt='icone'/>
                     </Icone>
                     )
                     })}
-            </ul>
+            </Icones>
         </HeaderContainer>
     )
 };
