@@ -69,7 +69,7 @@ export default function Header() {
                     )
                     })}
             </Opcoes>
-            <Icones className='icons'>
+            <Icones>
                 {icons.map((icon) => {
                     return (
                     <Icone>
