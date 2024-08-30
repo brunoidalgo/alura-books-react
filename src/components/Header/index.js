@@ -13,6 +13,7 @@ const HeaderContainer = styled.header`
 
 const LogoContainer = styled.div`
     display: flex;
+    font-size:1.4em;
 `; 
 
 const LogoImg = styled.img`
@@ -22,6 +23,12 @@ const LogoImg = styled.img`
 
 const Opcoes = styled.ul`
     display:flex;
+`;
+
+const Opcao = styled.ul`
+    text-transform: uppercase;
+    cursor: pointer;
+    font-weight: 600;
 `;
 
 const Icone = styled.li`
@@ -56,9 +63,9 @@ export default function Header() {
             <Opcoes>
                 {textOptions.map((text) => {
                     return (
-                    <li className='option'>
+                    <Opcao>
                         <p>{text}</p>
-                    </li>
+                    </Opcao>
                     )
                     })}
             </Opcoes>
