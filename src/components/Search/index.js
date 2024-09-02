@@ -1,6 +1,7 @@
 import Input from "../Input";
 import styled from "styled-components";
 import { useState } from "react";
+import { books } from "./filesSearch";
 
 const Title = styled.h1`
     font-size: 2em;
@@ -22,7 +23,7 @@ const SearchContainer = styled.section`
 `;
 
 export default function Search() {
-    const [textWrite, setTextWrite] = useState('');
+    const [bookSearch, setBookSearch] = useState('');
 
     return (
         <SearchContainer>
@@ -30,7 +31,19 @@ export default function Search() {
             <Subtitle>Encontre seu livro em nossa coleção.</Subtitle>
             <Input 
             placeholder="Escreva a próxima leitura" 
-            onBlur={event => setTextWrite(event.target.value)}/>
+            onBlur={event => {
+                const textWrite = event.target.value;
+                const resultSearch = books.filter( book => book.nome.includes(textWrite));
+                setBookSearch(resultSearch);
+            }}/>
+            { bookSearch.map( book => {
+                return (
+                    <div>
+                    <p>{book.nome}</p>
+                    <img src={book.src}/>
+                    </div>
+                    )
+            } ) }
         </SearchContainer>
     )
 };
