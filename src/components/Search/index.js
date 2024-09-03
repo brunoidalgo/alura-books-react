@@ -22,8 +22,25 @@ const SearchContainer = styled.section`
     height: 18em;
 `;
 
+const Result = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+    cursor: pointer;
+    p {
+        width: 200px;
+    }
+    img {
+        width: 100px;
+    }
+    &:hover {
+        border: 1px solid white;
+    }
+`;
+
 export default function Search() {
-    const [bookSearch, setBookSearch] = useState('');
+    const [bookSearch, setBookSearch] = useState([]);
 
     return (
         <SearchContainer>
@@ -36,14 +53,12 @@ export default function Search() {
                 const resultSearch = books.filter( book => book.nome.includes(textWrite));
                 setBookSearch(resultSearch);
             }}/>
-            { bookSearch.map( book => {
-                return (
-                    <div>
-                    <p>{book.nome}</p>
-                    <img src={book.src}/>
-                    </div>
-                    )
-            } ) }
+           {bookSearch.map((livro) => (
+                    <Result>
+                        <p>{livro.nome}</p>
+                        <img src={livro.src}/>
+                    </Result>
+                    ))}
         </SearchContainer>
     )
 };
