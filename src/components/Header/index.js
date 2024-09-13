@@ -2,6 +2,7 @@ import perfil from '../../images/perfil.svg';
 import sacola from '../../images/sacola.svg';
 import logo from '../../images/logo.svg';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 const HeaderContainer = styled.header`
     background-color: #fff;
@@ -14,6 +15,7 @@ const HeaderContainer = styled.header`
 const LogoContainer = styled.div`
     display: flex;
     font-size:1.4em;
+    color: #000;
 `; 
 
 const LogoImg = styled.img`
@@ -29,6 +31,7 @@ const Opcao = styled.ul`
     text-transform: uppercase;
     cursor: pointer;
     font-weight: 600;
+    color: #000;
 `;
 
 const Icone = styled.li`
@@ -45,12 +48,13 @@ const Icones = styled.ul`
 `;
 
 
-const textOptions = ["Categorias", "Favoritos", "Minha Estante"];
+const textOptions = ["categorias", "favoritos", "estante"];
 const icons = [perfil, sacola];
 
 export default function Header() {
     return (
         <HeaderContainer>
+            <Link to="/">
             <LogoContainer>
             <LogoImg 
             src={logo} 
@@ -60,12 +64,15 @@ export default function Header() {
                 Books
             </p>
             </LogoContainer>
+            </Link>
             <Opcoes>
                 {textOptions.map((text) => {
                     return (
-                    <Opcao>
-                        <p>{text}</p>
-                    </Opcao>
+                    <Link to={`${text}`}>
+                        <Opcao>
+                            <p>{text}</p>
+                        </Opcao>
+                    </Link>
                     )
                     })}
             </Opcoes>

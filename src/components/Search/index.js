@@ -1,7 +1,8 @@
 import Input from "../Input";
 import styled from "styled-components";
-import { useState } from "react";
-import { books } from "./filesSearch";
+import { useEffect, useState } from "react";
+import { getLivros } from "../../services/livros";
+import { deleteFavorito, postFavorito } from "../../services/favoritos";
 
 const Title = styled.h1`
     font-size: 2em;
@@ -22,8 +23,41 @@ const SearchContainer = styled.section`
     height: 18em;
 `;
 
+const Result = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+    cursor: pointer;
+    p {
+        width: 200px;
+    }
+    img {
+        width: 100px;
+    }
+    &:hover {
+        border: 1px solid white;
+    }
+`;
+
 export default function Search() {
-    const [bookSearch, setBookSearch] = useState('');
+    const [bookSearch, setBookSearch] = useState([]);
+    const [books, setBooks] = useState([]);
+
+    useEffect(() => {
+        fetchBooks();
+    },[]);
+
+
+    async function fetchBooks() {
+        const booksAPI = await getLivros();
+        setBooks(booksAPI);
+    };
+
+    async function insertFavorito(id) {
+        await postFavorito(id);
+        alert(`Livro de id: ${id} inserido com sucesso!`)
+      };
 
     return (
         <SearchContainer>
@@ -36,14 +70,12 @@ export default function Search() {
                 const resultSearch = books.filter( book => book.nome.includes(textWrite));
                 setBookSearch(resultSearch);
             }}/>
-            { bookSearch.map( book => {
-                return (
-                    <div>
-                    <p>{book.nome}</p>
-                    <img src={book.src}/>
-                    </div>
-                    )
-            } ) }
+           {bookSearch.map((livro) => (
+                    <Result onClick={() => insertFavorito(livro.id)}>
+                        <p>{livro.nome}</p>
+                        <img src={livro.src}/>
+                    </Result>
+                    ))}
         </SearchContainer>
     )
 };
