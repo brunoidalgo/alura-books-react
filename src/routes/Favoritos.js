@@ -1,8 +1,7 @@
 import { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import { getLivrosFavoritos } from '../services/favoritos';
+import { getLivrosFavoritos, deleteFavorito } from '../services/favoritos';
 import livroImg from '../images/livro2.png';
-import deleteFavorito from '../services/favoritos'
 
 const AppContainer = styled.div`
     width: 100vw;

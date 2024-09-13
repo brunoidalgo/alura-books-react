@@ -2,7 +2,8 @@ import Input from "../Input";
 import styled from "styled-components";
 import { useEffect, useState } from "react";
 import { getLivros } from "../../services/livros";
-import { deleteFavorito, postFavorito } from "../../services/favoritos";
+import { postFavorito } from "../../services/favoritos";
+import livro from '../../images/livro.png'
 
 const Title = styled.h1`
     font-size: 2em;
