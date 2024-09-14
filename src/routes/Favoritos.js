@@ -47,10 +47,6 @@ const Titulo = styled.h2`
 export default function Favoritos() {
   const [favoritos, setFavoritos] = useState([]);
 
-  useEffect(() => {
-    fetchFavoritos()
-  },[]);
-
   async function fetchFavoritos() {
     const favoritosAPI = await getLivrosFavoritos();
     setFavoritos(favoritosAPI);
@@ -58,21 +54,23 @@ export default function Favoritos() {
 
   async function removeFavorito(id) {
     await deleteFavorito(id);
+    await fetchFavoritos();
     alert(`Livro de id: ${id} removido com sucesso!`)
   };
+
+  useEffect(() => {
+    fetchFavoritos()
+  },[]);
   
   return (
     <AppContainer>
       <Titulo>Aqui estão seus livros favoritos:</Titulo>
        <ResultadoContainer>
-         {
-           favoritos.length !== 0 ? favoritos.map(favorito => (
-             <Resultado onClick={() => removeFavorito()}>
+         { favoritos.map(favorito => (
+             <Resultado onClick={() => removeFavorito(favorito.id)}>
                <p>{favorito.nome}</p>
                <img src={livroImg}/>
-             </Resultado>
-           )) : null
-         }
+             </Resultado> ))}
        </ResultadoContainer>
     </AppContainer>
   );
